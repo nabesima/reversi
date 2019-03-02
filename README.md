@@ -14,6 +14,17 @@ cd src
 javac *.java
 ```
 
+## 実行方法
+
+起動用のクラスは `Reversi` です．
+```
+java Reversi
+```
+
+## コンピュータの思考ルーチン
+
+コンピュータの思考ルーチンはクラス `Computer` のメソッド `think()` に記載します．
+
 ## ライセンス
 
 [MIT](https://github.com/nabesima/reversi/LICENCE.txt)
