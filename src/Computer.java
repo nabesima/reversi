@@ -18,7 +18,7 @@ public class Computer implements Runnable {
 
 	private void think() {
 		// (1) 最初に見つかった手を返す
-		selected = board.getPossibleMoves().get(0);
+		//selected = board.getPossibleMoves().get(0);
 
 //		// (2) 相手の石をできるかぎりめくる
 //	    selected = selectMaxMove(board, new Evaluator() {
@@ -50,6 +50,34 @@ public class Computer implements Runnable {
 //	          return blackMoves - whiteMoves + cornerValue + 64 * fixedStones;
 //	       }
 //	    });
+
+//	   // (5) ５手先まで読む
+//	   doMinMaxSearch(board, 5, false, new Evaluator() {
+//	      public double evaluate(Board new_board) {
+//	         if (new_board.isFinished())
+//	            return 1000 * (new_board.getNumStones(Stone.BLACK)
+//	                                 - new_board.getNumStones(Stone.WHITE));
+//	         int blackMoves  = new_board.getNumPossibleMoves(Stone.BLACK);
+//	         int whiteMoves  = new_board.getNumPossibleMoves(Stone.WHITE);
+//	         int cornerValue = new_board.getCornerValue();
+//	         int fixedStones = new_board.getNumFixedStones(Stone.BLACK);
+//	         return blackMoves - whiteMoves + cornerValue + 64 * fixedStones;
+//	      }
+//	   });
+
+	   // (6) ７手先まで読む
+	   doMinMaxSearch(board, 7, true, new Evaluator() {
+	      public double evaluate(Board new_board) {
+	         if (new_board.isFinished())
+	            return 1000 * (new_board.getNumStones(Stone.BLACK)
+	                                 - new_board.getNumStones(Stone.WHITE));
+	         int blackMoves  = new_board.getNumPossibleMoves(Stone.BLACK);
+	         int whiteMoves  = new_board.getNumPossibleMoves(Stone.WHITE);
+	         int cornerValue = new_board.getCornerValue();
+	         int fixedStones = new_board.getNumFixedStones(Stone.BLACK);
+	         return blackMoves - whiteMoves + cornerValue + 64 * fixedStones;
+	      }
+	   });
 
 	}
 
